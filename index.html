@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Charianne 🤍</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff8fab,#ffc2d1);
+height:100vh;
+overflow:hidden;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+transition:1s ease;
+}
+
+body.dim{
+background:linear-gradient(135deg,#6b1f3b,#2a0f1a);
+}
+
+.container{max-width:700px;width:100%;}
+
+.hidden{display:none;}
+
+h1{font-size:34px;margin-bottom:15px;}
+
+p{
+font-size:18px;
+line-height:1.7;
+white-space:pre-line;
+}
+
+button{
+margin-top:15px;
+padding:14px 22px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4f7b;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:.2s;
+}
+
+button:hover{transform:scale(1.05);}
+
+.no-btn{position:relative;}
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:18px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
+.fade{
+opacity:0;
+transform:translateY(10px);
+transition:0.6s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.heartbeat{
+animation:beat 1.2s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+50%{transform:scale(1.03);}
+100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+<source src="your-music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<!-- INTRO -->
+<div id="s1">
+<h1>Hiiiiii! 🤍</h1>
+<p>Before anything else... I need your full attention po 😌</p>
+<button onclick="next(2);startMusic()">Okay</button>
+</div>
+
+<div id="s2" class="hidden">
+<h1>Important Checkpoint 😏</h1>
+<p>Answer honestly okay? No escaping 👀</p>
+<button onclick="next(3)">Proceed</button>
+</div>
+
+<div id="s3" class="hidden">
+<h1>Quick Question 🤍</h1>
+<p>Do you like me?</p>
+<button onclick="next(4)">YES 🤍</button>
+<button id="noBtn" class="no-btn" onmouseover="runAway()">NO 😌</button>
+</div>
+
+<div id="s4" class="hidden">
+<h1>Final check 😏</h1>
+<p>Do you love me na?</p>
+<button onclick="next(5)">YES</button>
+<button id="noBtn2" class="no-btn" onmouseover="runAway2()">NO</button>
+</div>
+
+<!-- MESSAGE -->
+<div id="s5" class="hidden">
+
+<h1>💌</h1>
+
+<div id="box"></div>
+
+<button id="nextBtn" onclick="showNext()">Continue</button>
+
+<button id="finalBtn" class="hidden" onclick="next(6)">
+One last thing
+</button>
+
+</div>
+
+<!-- END -->
+<div id="s6" class="hidden">
+<h1>I love you! 🤍</h1>
+<p>Thank you for reading everything 🥺</p>
+</div>
+
+</div>
+
+<script>
+
+/* navigation */
+function next(step){
+for(let i=1;i<=6;i++){
+document.getElementById("s"+i).style.display="none";
+}
+document.getElementById("s"+step).style.display="block";
+
+if(step===5){
+document.body.classList.add("dim");
+startMessage();
+}
+}
+
+/* runaway buttons */
+function runAway(){
+const b=document.getElementById("noBtn");
+moveButton(b);
+b.innerText="NO 😌";
+}
+
+function runAway2(){
+const b=document.getElementById("noBtn2");
+moveButton(b);
+b.innerText="NO 😏";
+}
+
+function moveButton(btn){
+const padding = 80;
+const x = Math.random() * (window.innerWidth - padding);
+const y = Math.random() * (window.innerHeight - padding);
+
+btn.style.position="fixed";
+btn.style.left = x + "px";
+btn.style.top = y + "px";
+}
+
+/* music */
+function startMusic(){
+const m=document.getElementById("bgMusic");
+m.volume=0;
+m.play().catch(()=>{});
+
+let v=0;
+const fade=setInterval(()=>{
+if(v<0.5){
+v+=0.02;
+m.volume=v;
+}else{
+clearInterval(fade);
+}
+},120);
+}
+
+/* MESSAGE */
+const text = `Hi, Charianneeeeeee! 🤍
+
+“I hope this will be the last time I’ll call you by your name, kayyyy I want to call you “mine” instead hahah. Or maybe “love,” since you’ve become the love of my life naman na🫣😁 
+Kidding aside hahhaha, but yahhh in God’s time heheh, no pressure😉” 
+
+Note: begin and end quote, because that was the original message I made. 
+
+As of April 24, 2025, at 12:46 AM, you called me your love, so I was left speechless. 
+Mixed emotions ko po, but very glad to hear the words I had always wanted to hear. 
+
+Anyways, happiest birthday to you po. 
+
+Cliché nsd paminawon ba, but yaahh, thank you for existing, and thank God for bringing you into my life. 
+
+You’ve become the most important person in my life now, and I couldn’t imagine what my life would be like without you coming into it, like realllyyy. 
+I mean it po. 
+
+I always think about how we started, because even now, waray ghapun ko katuo na we’ve come to this point. 
+
+You’ve become my favorite notification, number one supporter, person who I can always yap to, and my special favorite person. 
+
+Even though we still haven’t seen each other, I already feel the connection. Like promise heehehe.
+
+I like how you understand me, even in the smallest things, that I don’t have to explain myself pa because you understand na what I’m always trying to say. 
+You make my days better without even trying, naga tan aw rko nimo okay nako. Happy nako. 😏 
+
+Talking to you feels easy and natural, and I’m always excited to talk to you. I really feel safe and secure with you. 
+You give me peace and calm, and it really hits different. 
+
+I like you so much, and I’m loving you genuinely. 🤍
+
+I hope our story won’t just be a lesson to learn from, but something that lasts and stays forever. 
+
+I’m really thankful that I met you. So please, stay strong. I’m always here for you, no matter what happens. I’ll be by your side. 
+We still have a future to hold on to, so let’s make it happen, okay? 
+
+I can’t wait to see you, hold you and spend time with you. I’m always looking forward to that. 
+
+Thank you for making my life happier.
+
+And once again...
+
+Happiest birthday, my love 🫶🤍`;
+
+/* MESSAGE FLOW */
+function startMessage(){
+const box=document.getElementById("box");
+box.innerHTML="";
+
+window.parts=text.split("\n\n");
+window.index=0;
+
+document.getElementById("nextBtn").style.display="inline-block";
+document.getElementById("finalBtn").classList.add("hidden");
+
+showParagraph();
+}
+
+function showNext(){
+showParagraph();
+}
+
+function showParagraph(){
+
+const box=document.getElementById("box");
+box.innerHTML="";
+
+if(index>=parts.length){
+document.getElementById("nextBtn").style.display="none";
+
+setTimeout(()=>{
+document.getElementById("finalBtn").classList.remove("hidden");
+},1000);
+
+return;
+}
+
+const p=document.createElement("p");
+p.className="fade";
+p.innerText=parts[index];
+
+box.appendChild(p);
+
+setTimeout(()=>p.classList.add("show"),50);
+
+if(index===parts.length-1){
+p.classList.add("heartbeat");
+}
+
+index++;
+}
+
+/* hearts */
+setInterval(()=>{
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="🤍";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},300);
+
+</script>
+
+</body>
+</html>
